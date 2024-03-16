@@ -14,11 +14,11 @@ public class EnemyController : MonoBehaviour
     
     void Start()
     {
-        target = FindAnyObjectByType<PlayerController>().transform;
+        //target = FindAnyObjectByType<PlayerController>().transform;
+        target = PlayerHealthController.instance.transform;
     }
     void Update()
     {
-        
         theRB.velocity = (target.position - transform.position).normalized * moveSpeed;
         if (hitCounter > 0)
         {
