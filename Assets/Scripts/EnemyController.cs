@@ -11,7 +11,12 @@ public class EnemyController : MonoBehaviour
     public float damage;
     public float hitWaitTime = 1f;
     public float hitCounter;
-    
+
+    public float health = 5f;
+
+    public float knockBackTime = .5f;
+    private float knockbackCounter;
+
     void Start()
     {
         //target = FindAnyObjectByType<PlayerController>().transform;
@@ -19,6 +24,21 @@ public class EnemyController : MonoBehaviour
     }
     void Update()
     {
+        if (knockbackCounter > 0)
+        {
+            knockbackCounter -= Time.deltaTime;
+
+            if (moveSpeed > 0)
+            {
+                moveSpeed = -moveSpeed*2;
+            }
+
+            if (knockbackCounter <= 0)
+            {
+                moveSpeed = Mathf.Abs(moveSpeed * .5f);
+            }
+        }
+
         theRB.velocity = (target.position - transform.position).normalized * moveSpeed;
         if (hitCounter > 0)
         {
@@ -32,6 +52,26 @@ public class EnemyController : MonoBehaviour
         {
             PlayerHealthController.instance.TakeDamage(damage);
             hitCounter = hitWaitTime;
+        }
+    }
+
+    public void TakeDamage(float damageToTake)
+    {
+        health -= damageToTake;
+
+        if(health <= 0) 
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(float damageToTake, bool shouldKnockback)
+    {
+        TakeDamage(damageToTake);
+
+        if (shouldKnockback)
+        {
+            knockbackCounter = knockBackTime;
         }
     }
 }
