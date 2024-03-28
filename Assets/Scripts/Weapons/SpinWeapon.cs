@@ -14,6 +14,8 @@ public class SpinWeapon : Weapon
     void Start()
     {
         SetStats();
+
+        // UIController.instance.levelUpButtons[0].UpdateButtonDisplay(this);
     }
     void Update()
     {
