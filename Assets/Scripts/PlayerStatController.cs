@@ -40,8 +40,8 @@ public class PlayerStatController : MonoBehaviour
         {
             UpdateDisplay();
         }
-        Debug.Log(moveSpeed.Count-1);
-        Debug.Log(moveSpeedLevel);
+        //Debug.Log(moveSpeed.Count-1);
+        //Debug.Log(moveSpeedLevel);
     }
 
     public void UpdateDisplay()

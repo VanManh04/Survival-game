@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -23,6 +24,11 @@ public class UIController : MonoBehaviour
     public TMP_Text coinText;
 
     public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay, healthUpgradeDisplay, pickupRangeUpgradeDisplay, maxWeaponsUpgradeDisplay;
+
+    public TMP_Text timeText;
+
+    public GameObject levelEndScreen;
+    public TMP_Text endTimeText;
     void Start()
     {
         
@@ -73,5 +79,23 @@ public class UIController : MonoBehaviour
     {
         PlayerStatController.instance.PurchaseMaxWeapons();
         SkipLevelUp();
+    }
+
+    public void UpdateTimer(float timer)
+    {
+        float minutes = Mathf.FloorToInt(timer / 60f);
+        float seconds =Mathf.FloorToInt( timer % 60);
+
+        timeText.text = "Time: " + minutes + ":" + seconds.ToString("00");
+    }
+
+    public void GoToMainMenu()
+    {
+
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
