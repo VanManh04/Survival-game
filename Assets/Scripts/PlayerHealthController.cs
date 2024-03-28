@@ -18,6 +18,7 @@ public class PlayerHealthController : MonoBehaviour
     }
     void Start()
     {
+        maxHealth = PlayerStatController.instance.health[0].value;
         currentHealth = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;

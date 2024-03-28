@@ -106,6 +106,8 @@ public class ExperienceLeverController : MonoBehaviour
                 UIController.instance.levelUpButtons[i].gameObject.SetActive(false);
             }
         }
+
+        PlayerStatController.instance.UpdateDisplay();
     }
 
     public void SpawnExp(Vector3 position,int expValues)
