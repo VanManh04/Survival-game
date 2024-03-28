@@ -41,7 +41,9 @@ public class ExperienceLeverController : MonoBehaviour
             LevelUp();
         }
 
-        UIController.instance.UpdateExperience(currentExperience, expLevers[currentLever],currentLever);
+        UIController.instance.UpdateExperience(currentExperience, expLevers[currentLever], currentLever);
+
+        SFXManager.instance.PlaySFXPitched(2);
     }
 
     private void LevelUp()
