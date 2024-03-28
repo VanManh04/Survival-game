@@ -15,10 +15,18 @@ public class PlayerController : MonoBehaviour
 
     public float pickupRange = 1.5f;
 
-    public Weapon activeWeapon;
+    //public Weapon activeWeapon;
+
+    public List<Weapon> unassignedWeapons, assignedWeapons;
+
+    public int maxWeapons;
+
+    [HideInInspector]
+    public List<Weapon> fullyLevelledWeapons = new List<Weapon>();
+
     void Start()
     {
-
+        AddWeapon(Random.Range(0, unassignedWeapons.Count));
     }
     void Update()
     {
@@ -30,5 +38,24 @@ public class PlayerController : MonoBehaviour
         transform.position += moveInput * moveSpeed * Time.deltaTime;
 
             anim.SetBool("isMoving", moveInput != Vector3.zero);
+    }
+
+    public void AddWeapon(int weaponNumber)
+    {
+        if(weaponNumber<unassignedWeapons.Count)
+        {
+            assignedWeapons.Add(unassignedWeapons[weaponNumber]);
+
+            unassignedWeapons[weaponNumber].gameObject.SetActive(true);
+            unassignedWeapons.RemoveAt(weaponNumber);
+        }
+    }
+
+    public void AddWeapon(Weapon weaponToAdd)
+    {
+        weaponToAdd.gameObject.SetActive(true);
+
+        assignedWeapons.Add(weaponToAdd);
+        unassignedWeapons.Remove(weaponToAdd);
     }
 }
