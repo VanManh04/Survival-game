@@ -10,7 +10,7 @@ public class DamageNumberController : MonoBehaviour
     public DamageNumber numberToSpawn;
     public Transform numberCanvas;
 
-    [SerializeField]private List<DamageNumber> numberPool = new List<DamageNumber>();
+    private List<DamageNumber> numberPool = new List<DamageNumber>();
 
     private void Awake()
     {

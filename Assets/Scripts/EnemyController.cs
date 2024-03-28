@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     public float knockBackTime = .5f;
     private float knockbackCounter;
 
+    public int expToGive = 1;
     void Start()
     {
         //target = FindAnyObjectByType<PlayerController>().transform;
@@ -62,6 +63,8 @@ public class EnemyController : MonoBehaviour
         if(health <= 0) 
         {
             Destroy(gameObject);
+
+            ExperienceLeverController.instance.SpawnExp(transform.position,expToGive);
         }
         DamageNumberController.instance.SpawnDamage(damageToTake,transform.position);
     }

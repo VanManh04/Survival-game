@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public Animator anim;
 
+    public float pickupRange = 1.5f;
     void Start()
     {
 

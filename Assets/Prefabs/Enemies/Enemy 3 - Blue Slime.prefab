@@ -117,6 +117,7 @@ MonoBehaviour:
   hitCounter: 0
   health: 15
   knockBackTime: 0.5
+  expToGive: 3
 --- !u!114 &2301931282821578406
 MonoBehaviour:
   m_ObjectHideFlags: 0
