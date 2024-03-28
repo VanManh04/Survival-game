@@ -21,12 +21,15 @@ public class PlayerController : MonoBehaviour
 
     public int maxWeapons;
 
-    [HideInInspector]
+    //[HideInInspector]
     public List<Weapon> fullyLevelledWeapons = new List<Weapon>();
 
     void Start()
     {
-        AddWeapon(Random.Range(0, unassignedWeapons.Count));
+        if (assignedWeapons.Count == 0)
+        {
+            AddWeapon(Random.Range(0, unassignedWeapons.Count));
+        }
     }
     void Update()
     {

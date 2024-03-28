@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -25,26 +23,34 @@ public class EnemyController : MonoBehaviour
     }
     void Update()
     {
-        if (knockbackCounter > 0)
+        if (PlayerController.instance.gameObject.activeSelf == true)
         {
-            knockbackCounter -= Time.deltaTime;
-
-            if (moveSpeed > 0)
+            if (knockbackCounter > 0)
             {
-                moveSpeed = -moveSpeed*2;
+                knockbackCounter -= Time.deltaTime;
+
+                if (moveSpeed > 0)
+                {
+                    moveSpeed = -moveSpeed * 2;
+                }
+
+                if (knockbackCounter <= 0)
+                {
+                    moveSpeed = Mathf.Abs(moveSpeed * .5f);
+                }
             }
 
-            if (knockbackCounter <= 0)
+            theRB.velocity = (target.position - transform.position).normalized * moveSpeed;
+            if (hitCounter > 0)
             {
-                moveSpeed = Mathf.Abs(moveSpeed * .5f);
+                hitCounter -= Time.deltaTime;
             }
         }
-
-        theRB.velocity = (target.position - transform.position).normalized * moveSpeed;
-        if (hitCounter > 0)
+        else
         {
-            hitCounter -= Time.deltaTime;
+            theRB.velocity = new Vector2(0, 0);
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -60,13 +66,13 @@ public class EnemyController : MonoBehaviour
     {
         health -= damageToTake;
 
-        if(health <= 0) 
+        if (health <= 0)
         {
             Destroy(gameObject);
 
-            ExperienceLeverController.instance.SpawnExp(transform.position,expToGive);
+            ExperienceLeverController.instance.SpawnExp(transform.position, expToGive);
         }
-        DamageNumberController.instance.SpawnDamage(damageToTake,transform.position);
+        DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }
 
     public void TakeDamage(float damageToTake, bool shouldKnockback)

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4664617929584090838}
   - component: {fileID: 6304254061268709177}
   - component: {fileID: 8595892679059062600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy 1 - Green Bee
   m_TagString: Enemy
   m_Icon: {fileID: 0}

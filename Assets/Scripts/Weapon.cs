@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
         {
             weaponLevel++;
             statsUpdated = true;
-            if(weaponLevel > stats.Count - 1)//check max level weapon
+            if(weaponLevel >= stats.Count - 1)//check max level weapon
             {
                 PlayerController.instance.fullyLevelledWeapons.Add(this);
                 PlayerController.instance.assignedWeapons.Remove(this);

@@ -102,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPoint = Vector3.zero;
 
         bool spawnVerticalEdge = Random.Range(0f, 1f) > 0.5f;
-        Debug.Log(spawnVerticalEdge + "true= random Y");
+        Debug.Log(spawnVerticalEdge + " true = random Y");
 
         if (spawnVerticalEdge)
         {
