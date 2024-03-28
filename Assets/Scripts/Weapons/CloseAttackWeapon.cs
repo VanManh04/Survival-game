@@ -22,11 +22,11 @@ public class CloseAttackWeapon : Weapon
         }
 
         attackCounter -= Time.deltaTime;
-        direction = Input.GetAxisRaw("Horizontal");
+        
         if (attackCounter<=0)
         {
             attackCounter = stats[weaponLevel].timeBetweenAttacks;
-            
+            direction = Input.GetAxisRaw("Horizontal");
             if (direction != 0)
             {
                 if (direction > 0)
