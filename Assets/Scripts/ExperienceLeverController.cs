@@ -51,6 +51,7 @@ public class ExperienceLeverController : MonoBehaviour
         {
             currentLever =expLevers.Count-1;
         }
+        PlayerController.instance.activeWeapon.LevelUp();
     }
 
     public void SpawnExp(Vector3 position,int expValues)
